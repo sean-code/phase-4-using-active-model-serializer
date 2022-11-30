@@ -6,11 +6,17 @@ class MoviesController < ApplicationController
     render json: movies
   end
 
+  def summary
+    movie = Movie.find(params[:id])
+    render json: movie, serializer: MovieSummarySerializer
+  end
+  
+
   def show
     movie = Movie.find(params[:id])
     render json: movie
   end
-
+  
   private
 
   def render_not_found_response
